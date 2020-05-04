@@ -1,0 +1,4 @@
+  File "amir.p", line 1
+    print(hello world );
+                    ^
+SyntaxError: invalid syntax
