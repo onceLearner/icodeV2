@@ -12,27 +12,25 @@ public class CodeHandlerV3 {
     public static String judgeWithoutSshV2(String language, String clientCode,String input,String reference) throws IOException {
 
 
-        // les commandes selons les languages
-        String pyth=" echo '" + clientCode + "' > amir.py && python amir.py ";
-
-        String c=" echo '" + clientCode + "' > file2.c && gcc -o reda2 file2.c && ./reda2";
-
-        String jav=" echo '" + clientCode + "' > hamid.java && javac hamid.java  && java hamid"  ;
-
 
         // the only file I will create is for the input stream;
-        File fileInput=new File("in.txt");
+        File fileInput=new File("files/in.txt");
         FileWriter fwrite=new FileWriter(fileInput);
         fwrite.write(input);
         fwrite.close();
-        //////////////////////////////////////>??test
-        String filename="codefile."+language;
+
+        // ----------create a file with extension as lang and write code inside it ---------
+        String filename="files/MyCode."+language;
         File fileCode=new File(filename);
         FileWriter fileWriter=new FileWriter(fileCode);
         fileWriter.write(clientCode);
         fileWriter.close();
 
+
+        // -----------create command depend on languge
         String PythonCommand="python3.7 "+filename;
+        String cCommand="gcc -o fileC "+filename +" && ./fileC";
+        String javaCommand="javac " +filename +"&& java MyCode.java";
 
 
 
@@ -49,9 +47,9 @@ public class CodeHandlerV3 {
 
         switch (language) {
 
-            case "c":  processBuilder.command("bash","-c","echo"+clientCode+">amir.c","gcc -o reda amir.c","./reda"); break;
+            case "c":  processBuilder.command("bash","-c",cCommand); break;
 
-            case "java":processBuilder.command("bash","-c",jav); break;
+            case "java":processBuilder.command("bash","-c",javaCommand); break;
 
             case  "py":processBuilder.command("bash","-c",PythonCommand); break;
 

@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 @RestController
 public class localExecutionV1 {
+    @RequestMapping("remote")
+    public  String anythj(){
+        return "it work";
+    }
 
        @RequestMapping("lv1")
     public String handlerV1() throws IOException {
