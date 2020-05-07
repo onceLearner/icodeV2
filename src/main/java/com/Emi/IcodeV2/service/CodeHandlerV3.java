@@ -17,10 +17,8 @@ public class CodeHandlerV3 {
 
 
         //--------- the only file I will create is for the input stream;
-        ClassPathResource res = new ClassPathResource("in.txt");
-        File fileInput2 = new File(res.getPath());
-
-        File fileInput =ResourceUtils.getFile("classpath:Problems/in.txt");
+        ClassPathResource res = new ClassPathResource("/Problems/in.txt");
+        File fileInput = new File(res.getFilename());
 //        File fileInput = new ClassPathResource("classpath:in.txt").getFile();
         File fileInput1=new File("in.txt");
         FileWriter fwrite=new FileWriter(fileInput);
@@ -28,8 +26,11 @@ public class CodeHandlerV3 {
         fwrite.close();
 
         // ----------create a file with extension as lang and write code inside it ---------
+
         String filename="MyCode."+language;
-        File fileCode=new File(filename);
+//        ClassPathResource res2=new ClassPathResource("Problem/"+
+
+        File fileCode=new File(System.getProperty("user.home") + "//" + filename);
         FileWriter fileWriter=new FileWriter(fileCode);
         fileWriter.write(clientCode);
         fileWriter.close();
@@ -42,7 +43,8 @@ public class CodeHandlerV3 {
         // -----------create command depend on languge
         String PythonCommand="python3.7 "+filename;
         String cCommand="gcc -o fileC "+filename +" && ./fileC";
-        String javaCommand="javac " +filename +"&& java MyCode.java";
+        String javaCommand="javac " +filename +"&& java MyCode";
+
 
 
 
@@ -51,6 +53,8 @@ public class CodeHandlerV3 {
 
 
         ProcessBuilder processBuilder=new ProcessBuilder();
+
+        processBuilder.directory(new File(System.getProperty("user.home")));
 
 //
         processBuilder.redirectInput(fileInput);
