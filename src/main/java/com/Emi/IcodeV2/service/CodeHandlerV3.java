@@ -16,14 +16,14 @@ public class CodeHandlerV3 {
 
 
         //--------- the only file I will create is for the input stream;
-        File fileInput=new File("files/in.txt").getAbsoluteFile();
+        File fileInput=new File("in.txt");
         FileWriter fwrite=new FileWriter(fileInput);
         fwrite.write(input);
         fwrite.close();
 
         // ----------create a file with extension as lang and write code inside it ---------
-        String filename="files/MyCode."+language;
-        File fileCode=new File(filename).getAbsoluteFile();
+        String filename="MyCode."+language;
+        File fileCode=new File(filename);
         FileWriter fileWriter=new FileWriter(fileCode);
         fileWriter.write(clientCode);
         fileWriter.close();
