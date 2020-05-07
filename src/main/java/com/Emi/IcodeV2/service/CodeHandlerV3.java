@@ -17,7 +17,7 @@ public class CodeHandlerV3 {
 
 
         //--------- the only file I will create is for the input stream;
-        File fileInput = new ClassPathResource("in.txt").getFile();
+        File fileInput = new ClassPathResource("classpath:in.txt").getFile();
         File fileInput1=new File("in.txt");
         FileWriter fwrite=new FileWriter(fileInput);
         fwrite.write(input);
