@@ -1,6 +1,8 @@
 package com.Emi.IcodeV2.service;
 
 import org.apache.commons.io.IOUtils;
+import org.springframework.util.ResourceUtils;
+import sun.net.ResourceManager;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,17 +16,19 @@ public class CodeHandlerV3 {
 
 
         //--------- the only file I will create is for the input stream;
-        File fileInput=new File("files/in.txt");
+        File fileInput=new File("files/in.txt").getAbsoluteFile();
         FileWriter fwrite=new FileWriter(fileInput);
         fwrite.write(input);
         fwrite.close();
 
         // ----------create a file with extension as lang and write code inside it ---------
         String filename="files/MyCode."+language;
-        File fileCode=new File(filename);
+        File fileCode=new File(filename).getAbsoluteFile();
         FileWriter fileWriter=new FileWriter(fileCode);
         fileWriter.write(clientCode);
         fileWriter.close();
+
+
 
 
         // -----------create command depend on languge
