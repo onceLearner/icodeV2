@@ -1,6 +1,7 @@
 package com.Emi.IcodeV2.service;
 
 import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.ResourceUtils;
 import sun.net.ResourceManager;
 
@@ -16,7 +17,8 @@ public class CodeHandlerV3 {
 
 
         //--------- the only file I will create is for the input stream;
-        File fileInput=new File("in.txt");
+        File fileInput = new ClassPathResource("in.txt").getFile();
+        File fileInput1=new File("in.txt");
         FileWriter fwrite=new FileWriter(fileInput);
         fwrite.write(input);
         fwrite.close();
@@ -27,6 +29,8 @@ public class CodeHandlerV3 {
         FileWriter fileWriter=new FileWriter(fileCode);
         fileWriter.write(clientCode);
         fileWriter.close();
+
+
 
 
 
