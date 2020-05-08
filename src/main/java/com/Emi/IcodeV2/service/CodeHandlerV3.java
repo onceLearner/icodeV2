@@ -1,3 +1,6 @@
+// TODO: handler without ssh
+
+
 package com.Emi.IcodeV2.service;
 
 import org.apache.commons.io.IOUtils;
@@ -9,10 +12,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CodeHandlerV3 {
 
-    public static String judgeWithoutSshV2(String language, String clientCode,String input,String reference) throws IOException {
+    public static List<String> judgeWithoutSshV2(String language, String clientCode, String input, String reference) throws IOException {
 
 
 
@@ -84,11 +89,19 @@ public class CodeHandlerV3 {
         String refCode=reference.replaceAll("\\r|\\n|\\s+$", "");
 
 
+        List<String> toBeReturned=new ArrayList<>();
+
         Boolean flag=Outputcode.equals(refCode);
-         return "flag:"+flag +"\n"+
+         String oldReturnedValue= "flag:"+flag +"\n"+
                  "outputed:"+Outputcode +"\n"+
                  "ref:"+reference+"\n"+
                  "Error :" +Errors;
+         String flagString=flag? "correct": "not";
+
+        toBeReturned.add(0,flagString);  //  returned : [correct,errors]
+        toBeReturned.add(1,Errors);
+        return  toBeReturned;
+
 
 
 

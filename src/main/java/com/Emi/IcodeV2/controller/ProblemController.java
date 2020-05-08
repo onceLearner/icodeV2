@@ -21,14 +21,14 @@ public class ProblemController {
     @Autowired
     UserProbRepo userProbRepo;
 
-    @GetMapping("getp")
+    @GetMapping("getP")
     public List<Problem> getProblem(){
         return problemRepo.findAll();
     }
 
 
 
-    @PostMapping("/addp")
+    @PostMapping("/addP")
     public ResponseEntity<?>  addProblem(@RequestBody Problem problem){
         problemRepo.save(problem);
         return ResponseEntity.ok().body("added successfuly");

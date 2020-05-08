@@ -14,18 +14,18 @@ public class Problem {
 
 
 
-    private String title;
+    private String label;
     private String text;
     private String input;
-    private String output;
+    private String ref;
 
 
     public Problem(){};
-    public Problem(String title, String text, String input, String output) {
-        this.title = title;
+    public Problem(String label, String text, String input, String output) {
+        this.label = label;
         this.text = text;
         this.input = input;
-        this.output = output;
+        this.ref = ref;
     }
 
 
@@ -33,8 +33,8 @@ public class Problem {
         this.idP = idP;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     public void setText(String text) {
@@ -45,16 +45,16 @@ public class Problem {
         this.input = input;
     }
 
-    public void setOutput(String output) {
-        this.output = output;
+    public void setref(String ref) {
+        this.ref = ref;
     }
 
     public Integer getIdP() {
         return idP;
     }
 
-    public String getTitle() {
-        return title;
+    public String getLabel() {
+        return label;
     }
 
     public String getText() {
@@ -65,8 +65,8 @@ public class Problem {
         return input;
     }
 
-    public String getOutput() {
-        return output;
+    public String getref() {
+        return ref;
     }
 
 
@@ -75,10 +75,10 @@ public class Problem {
     public String toString() {
         return "Problem{" +
                 "idP=" + idP +
-                ", title='" + title + '\'' +
+                ", label='" + label + '\'' +
                 ", text='" + text + '\'' +
                 ", input='" + input + '\'' +
-                ", output='" + output + '\'' +
+                ", ref='" + ref + '\'' +
                 '}';
     }
 }
