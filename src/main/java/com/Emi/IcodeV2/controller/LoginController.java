@@ -28,6 +28,15 @@ public class LoginController {
         return ResponseEntity.ok().body("success");
     }
 
+    @PostMapping ("/isAdmin")
+    public  ResponseEntity<?> isAdmin(@RequestParam(name = "username") String username ) {
+        User foundUser;
+         foundUser=  userRepository.findUserByUsername(username);
+         if(foundUser.getRole().equals("user")) return ResponseEntity.ok().body("no");
+         return  ResponseEntity.ok().body("yes");
+    }
+
+
 
 
 }

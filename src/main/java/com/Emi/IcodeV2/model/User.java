@@ -1,6 +1,8 @@
 package com.Emi.IcodeV2.model;
 
 
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,17 +16,27 @@ public class User {
     private Long id;
 
 
-
     private String username;
 
     private String password;
+    private String role="user";
 
 
-     public User(){}
+    public User() {
+    }
 
-     public User(String username, String password) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public void setId(Long id) {
