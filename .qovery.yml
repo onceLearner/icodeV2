@@ -1,0 +1,11 @@
+---
+application:
+  name: "icodev2"
+  project: "redaa"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-icodev2"
+  routes:
+  - application_name: "icodev2"
+    paths:
+    - "/*"
